@@ -37,4 +37,31 @@ html {
   padding: 1rem 2rem;
   font-weight: 500;
   color: #686868;
+  margin-bottom: 1rem;
+}
+
+.element-container {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  /* background-color: #fff; */
+  /* padding: 10px 20px; */
+}
+
+.dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: var(--speed) ease;
+}
+
+.dropdown.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: var(--speed) ease;
 }
