@@ -1,0 +1,40 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  padding: 5rem;
+}
+
+.calendarStyle {
+  border: 1px solid #eee;
+  font-family: poppins;
+  border-radius: 1.5rem;
+  z-index: 999;
+  position: relative;
+  background-color: #fff;
+}
+
+.single-calendar-input {
+  height: 4rem;
+  width: 35rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ddd;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  color: #686868;
+}
