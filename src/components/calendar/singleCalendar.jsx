@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { format } from 'date-fns'
+import { useEffect, useRef, useState } from 'react'
 import { DateRange } from 'react-date-range'
 
 export const SingleCalendar = () => {
@@ -11,20 +12,52 @@ export const SingleCalendar = () => {
     },
   ])
 
-  console.log({ state })
+  // handle date formatting
+  const [formatDate, setFormatDate] = useState({
+    startDate: new Date(),
+    endDate: new Date(),
+  })
+
+  useEffect(() => {
+    setFormatDate((prev) => {
+      return {
+        ...prev,
+        startDate: format(state[0].startDate, 'dd/MM/yyyy'),
+        endDate: format(state[0].endDate, 'dd/MM/yyyy'),
+      }
+    })
+  }, [state])
+
+  // handle click outside
+  const calendarRef = useRef()
+  useEffect(() => {
+    const handler = (e) => {
+      if (!calendarRef?.current.contains(e.target)) {
+        setOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handler)
+
+    return () => {
+      document.removeEventListener('mousedown', handler)
+    }
+  })
 
   return (
     <div className='container'>
-      <div className='element-container'>
+      <div className='element-container' ref={calendarRef}>
         <input
           type='text'
           className='single-calendar-input'
           onClick={() => {
             setOpen(!open)
           }}
+          readOnly
+          value={`${formatDate.startDate} - ${formatDate.endDate}`}
         />
 
-        <div className={`dropdown ${open ? 'open' : 'inactive'}`}>
+        <div className={`dropdown ${open ? 'active' : 'inactive'}`}>
           <DateRange
             className='calendarStyle'
             onChange={(item) => setState([item.selection])}
