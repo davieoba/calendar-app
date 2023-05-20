@@ -1,16 +1,15 @@
 import { format } from 'date-fns'
 import { useEffect, useRef, useState } from 'react'
 import { DateRange } from 'react-date-range'
+import { CalendarIcon } from '../../assets/calendar-icon'
 
 export const SingleCalendar = () => {
   const [open, setOpen] = useState(false)
-  const [state, setState] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: 'selection',
-    },
-  ])
+  const [state, setState] = useState([{
+    startDate: new Date(),
+    endDate: new Date(),
+    key: 'selection',
+  }, ])
 
   // handle date formatting
   const [formatDate, setFormatDate] = useState({
@@ -47,15 +46,23 @@ export const SingleCalendar = () => {
   return (
     <div className='container'>
       <div className='element-container' ref={calendarRef}>
-        <input
-          type='text'
-          className='single-calendar-input'
-          onClick={() => {
-            setOpen(!open)
-          }}
-          readOnly
-          value={`${formatDate.startDate} - ${formatDate.endDate}`}
-        />
+        <div className='single-calendar-input'>
+          <input
+            type='text'
+            className=''
+            onClick={() => {
+              setOpen(!open)
+            }}
+            readOnly
+            value={`${formatDate.startDate} - ${formatDate.endDate}`}
+          />
+
+          <div className='icon'>
+            <CalendarIcon />
+          </div>
+
+        </div>
+
 
         <div className={`dropdown ${open ? 'active' : 'inactive'}`}>
           <DateRange

@@ -29,15 +29,29 @@ html {
   background-color: #fff;
 }
 
+.icon {
+  height: 1.6rem;
+  width: 2rem;
+}
+
+input {
+  height: 100%;
+  width: 90%;
+  border: none;
+  outline: none;
+}
+
 .single-calendar-input {
   height: 4rem;
   width: 35rem;
   border-radius: 0.5rem;
   border: 1px solid #ddd;
-  padding: 1rem 2rem;
+  padding: 0 10px;
   font-weight: 500;
   color: #686868;
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .element-container {
